@@ -25,7 +25,7 @@
                     <div class="mt-4">
                         <div class="flex">
                             <div class="rounded-full w-12 h-12">
-                                {{-- アバター表示 --}}
+                                {{-- icon表示 --}}
                                 <img src="{{asset('storage/icon/'.($post->user->icon??'user_default.jpg'))}}">
                             </div>
                             <h1 class="text-lg text-gray-700 font-semibold float-left pt-4">
@@ -54,11 +54,11 @@
                     {{-- div 追加部分 --}}
                     <div>
                         <p class="mt-4 text-gray-600 py-4">{{$post->body}}</p>
-                        @if($post->image)
+                        @if($post->pic)
                             <div>
-                                (画像ファイル：{{$post->image}})
+                                (画像ファイル：{{$post->pic}})
                             </div>
-                            <img src="{{ asset('storage/images/'.$post->image)}}" class="mx-auto" style="height:300px;">
+                            <img src="{{ asset('storage/pics/'.$post->pic)}}" class="mx-auto" style="height:300px;">
                         @endif
                         <div class="text-sm font-semibold flex flex-row-reverse">
                             <p> {{ $post->user->name??'削除されたユーザー'}} ☆ {{$post->created_at->format('Y/m/d')}}</p>

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Company;
 use App\Models\Project;
 use Illuminate\Http\Request;
+// use App\Models\Company;
 
 class ProjectController extends Controller
 {
@@ -40,7 +40,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        // バリエーション
+        //追加する バリエーション
         $inputs=request()->validate([
         // $inputs=$request->validate([
             'title'=>'required|max:255',
@@ -48,17 +48,17 @@ class ProjectController extends Controller
             'image'=>'image|max:1024'
         ]);
 
-
         // データ取得
         $project=new Project();
         $project->title=$request->title;
         $project->content=$request->content;
+        $project->user_id=auth()->user()->id;
         
         // company_id とcategory_idは一時敵にuser_idにする
         $project->company_id=auth()->user()->id;
         $project->category_id=auth()->user()->id;
 
-        // $post->category_id=->$request->category_id;
+        // $project->category_id=->$request->category_id;
 
         // 画像保存
         

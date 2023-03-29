@@ -19,7 +19,6 @@ class PostController extends Controller
         $posts=Post::orderBy('created_at','desc')->get();
         $user=auth()->user();
         return view('post.index', compact('posts', 'user'));
-
     }
 
     /**
@@ -49,6 +48,7 @@ class PostController extends Controller
             'pic'=>'image|max:1024'
         ]);
 
+        // データ取得
         $post=new Post();
         $post->title=$request->title;
         $post->body=$request->body;
