@@ -42,7 +42,7 @@
                             <img src="{{ asset('storage/images/'.$project->image)}}" class="mx-auto" style="height:300px;">
                         @endif
                         <div class="text-sm font-semibold flex flex-row-reverse">
-                            <p> {{ $project->company_id}} ★ {{$project->created_at->format('Y/m/d')}}</p>
+                            <p> {{ $project->company_id}} ☆ {{$project->created_at->format('Y/m/d')}}</p>
                         </div>
                     </div>
                     {{-- レイアウト調整 --}}

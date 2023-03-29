@@ -22,7 +22,8 @@
                             <hr class="w-full">
                             <p class="mt-4 text-gray-600 py-4">{{Str::limit($project->content, 200, '...')}}</p>
                             <div class="text-sm font-semibold flex flex-row-reverse">
-                                <p>{{ $project->company_id }} ★ {{$project->created_at->format('Y/m/d')}}</p>
+                                {{-- <p>{{ $project->company_id }} ☆ {{$project->created_at->format('Y/m/d')}}</p> --}}
+                                <p>{{$project->created_at->format('Y/m/d')}}</p>
                             </div>
                         </div>
                     </div>

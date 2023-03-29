@@ -73,7 +73,7 @@
                         <div class="text-sm font-semibold flex flex-row-reverse">
                             {{-- <p> {{ $comment->user->name }} • {{$comment->created_at->format('Y/m/d')}}</p> --}}
                             {{-- クラスを変更 --}}
-                            <p>{{ $post->user->name??'削除されたユーザー' }} ☆ {{$post->created_at->format('Y/m/d')}}</p>
+                            <p class="float-left pt-4"> {{ $comment->user->name??'削除されたユーザー' }} ☆ {{$comment->created_at->format('Y/m/d')}}</p>
                             {{-- icon追加 --}}
                             <span class="rounded-full w-12 h-12">
                                 <img src="{{asset('storage/icon/'.($comment->user->icon??'user_default.jpg'))}}">
