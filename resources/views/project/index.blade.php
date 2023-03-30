@@ -27,6 +27,19 @@
                             </div>
                         </div>
                     </div>
+                    {{-- いいね数表示 --}}
+                    @if ($project->likes->count())
+                    <div class="float-right">
+                        <div class="flex">
+                            <img src="{{asset('img/like.png')}}" width="30px">
+                            {{-- <span class="badge" > --}}
+                                {{ $project->likes->count() }}
+                            {{-- </span> --}}
+                        </div>                               
+                    </div>
+                    @else
+                    <div class="float-right"><img src="{{asset('img/unlike.png')}}" width="30px"> </div>
+                    @endif
                 </div>
             </div>
         @endforeach

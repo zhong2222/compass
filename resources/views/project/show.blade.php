@@ -17,9 +17,26 @@
                     <div class="mt-4">
                         <h1 class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer">
                             <a href="{{route('project.show', $project)}}">{{ $project->title }}</a>
+{{-- 気になるボタン --}}
+
+                    {{-- <img src="{{asset('img/likebutton.png')}}" width="30px"> --}}
+                    <!-- もし$likeがあれば＝ユーザーが「いいね」をしていたら -->
+                    @if($like)
+                    <!-- 「いいね」取消用ボタンを表示 -->
+                        <a href="{{ route('unlike', $project) }}">
+                            <x-primary-button class="bg-red-700 float-right ml-4">登録済</x-primary-button>
+                        </a>
+                    @else
+                    <!-- まだユーザーが「いいね」をしていなければ、「いいね」ボタンを表示 -->
+                        <a href="{{ route('like', $project) }}" >
+                            <x-primary-button class="bg-teal-700 float-right ml-4">気になる</x-primary-button>
+                        </a>
+                    @endif
                         </h1>
                         <hr class="w-full">
                     </div>
+
+                    
 
                     @can('admin')
                     <div class="flex justify-end mt-4">

@@ -8,6 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\LikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,10 @@ Route::middleware(['verified'])->group(function(){
     //プロフィール編集用ルート設定を追加
     Route::get('profile/{user}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
+
+    // 気になるボタン
+    Route::get('project/like/{project}', [LikeController::class, 'like'])->name('like');
+    Route::get('project/unlike/{project}', [LikeController::class, 'unlike'])->name('unlike');
 
     // 管理者用画面
     Route::middleware(['can:admin'])->group(function(){

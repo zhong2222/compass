@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Models\Like;
 // use App\Models\Company;
 
 class ProjectController extends Controller
@@ -13,12 +14,13 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Project $project)
     {
         // $projects=Project::all();
+        $likes=Like::where('project_id', $project->id)->where('user_id', auth()->user()->id)->first();
         $projects=Project::orderBy('created_at','desc')->get();
         $user=auth()->user();
-        return view('project.index', compact('projects', 'user'));
+        return view('project.index', compact('projects', 'user','likes'));
     }
 
     /**
@@ -86,7 +88,8 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         //以下追加
-        return view('project.show', compact('project'));
+        $like=Like::where('project_id', $project->id)->where('user_id', auth()->user()->id)->first();
+        return view('project.show', compact('project','like'));
     }
 
     /**
@@ -144,4 +147,11 @@ class ProjectController extends Controller
         $project->delete();
         return redirect()->route('project.index')->with('message', '投稿を削除しました');
     }
+
+    public function mylike() {
+        $user=auth()->user()->id;
+        $likes=Like::where('user_id', $user)->orderBy('created_at', 'desc')->get();
+        return view('post.mylike', compact('likes'));
+    }
+
 }
